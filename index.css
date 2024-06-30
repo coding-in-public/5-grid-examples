@@ -1,0 +1,142 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/buttons.min.css";
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+nav {
+  padding: 1rem;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1rem;
+  }
+}
+
+main {
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 4fr 2fr 1fr;
+
+  img {
+    grid-area: 1 / 1 / -2 / -1;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-card {
+    grid-area: 2/ 2/ 4 / 3;
+  }
+}
+
+.hero-card {
+  display: grid;
+  /* helpful for parent-controlled spacing */
+  place-items: center;
+  place-content: center;
+  gap: 0.2rem;
+  background-color: var(--surface-2);
+  /* remember children are full-width by default (even inline) */
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-4);
+  p {
+    text-transform: uppercase;
+  }
+}
+
+.card {
+  max-width: 400px;
+  padding: 1.5rem;
+  border: 2px solid var(--surface-2);
+  display: grid;
+  gap: 0.5rem;
+  h2 {
+    margin-top: 0.5rem;
+  }
+  justify-items: start;
+}
+
+.cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.responsive-grid {
+  display: grid;
+}
+
+header {
+  background-color: var(--surface-2);
+}
+
+aside {
+  background-color: var(--surface-3);
+}
+
+article {
+  background-color: var(--surface-4);
+}
+
+.cards {
+  background-color: goldenrod;
+}
+
+@media screen and (min-width: 600px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  header {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .responsive-grid {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas:
+      "header header  ."
+      "aside  article article"
+      "aside  image   cards";
+  }
+  header {
+    grid-area: header;
+  }
+  aside {
+    grid-area: aside;
+  }
+  article {
+    grid-area: article;
+  }
+  .image {
+    grid-area: image;
+  }
+  .cards {
+    grid-area: cards;
+  }
+}
